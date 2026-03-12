@@ -1,0 +1,25 @@
+name: portfolio
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+        #get access to your portfolio code via pre-built actions
+      - name: checkout code
+        uses: actions/checkout@v4
+
+        #setup github pages
+      - name: setup github pages
+        uses: actions/configure-github-pages@v4
+
+        #static code artifacts
+      - name: upload static files
+        uses: actions/upload-pages-artifact@v4
+
+      - name: Deploy to github pages
+        uses: actions/deploy-pages@v4
